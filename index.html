@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ANT POS</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet"/>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+  <!-- Top Navbar -->
+  <nav class="navbar navbar-light bg-white shadow-sm px-3">
+    <a class="navbar-brand d-flex align-items-center" href="#">
+      <img src="/assets/images/logo.png" alt="logo">
+      <span class="fs-3 fw-bold" style="color: #0049DE;">ANT POS</span>
+    </a>
+    <div class="d-flex align-items-center">
+      <div class="icon-btn btn-cal"><i class="fa-solid fa-calculator"></i></div>
+      <div class="icon-btn" onclick="toggleFullScreen()">
+        <i class="fa-solid fa-expand"></i>
+      </div>
+      <div class="icon-btn"><i class="fa-solid fa-money-bill-wave"></i></div>
+      <div class="icon-btn"><i class="fa-solid fa-chart-line"></i></div>
+      <div class="icon-btn"><i class="fa-solid fa-circle-info"></i></div>
+      <div class="icon-btn"><i class="fa-solid fa-gear"></i></div>
+      <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="profile" class="profile-img">
+    </div>
+  </nav>
+
+  <!-- Middle Section -->
+  <div class="middle-section">
+    <!-- Left Panel -->
+    <div class="left-panel">
+      <!-- Left Header -->
+      <div class="left-header d-flex justify-content-between align-items-center mb-3">
+        <div>
+          <h5 class="fw-bold mb-1" style="color:#092C4C;">Welcome, Kasun Perera</h5>
+          <small class="text-muted" id="todayDate"></small>
+        </div>
+        <div class="d-flex align-items-center">
+          <input type="text" class="form-control me-2" placeholder="Category" style="max-width:200px; border-radius: 8px;">
+          <button class="btn btn-primary me-2"><i class="fa-solid fa-filter"></i></button>
+          <button class="btn btn-warning"><i class="fa-solid fa-star"></i></button>
+        </div>
+      </div>
+
+      <!-- Products Grid -->
+      <!-- Products Grid -->
+      <div class="product-list">
+        <div class="row">
+          <!-- Example Product -->
+          <div class="row">
+  <div class="col-4 mb-3">
+    <div class="product-card" data-name="Apple iPhone 13" data-code="#0023" data-serial="SN1001" data-price="1230.00" data-discount="10" data-instock="40">
+      <img src="https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-13-pink-select-2021" width="70">
+      <div>Apple iPhone 13 - 64 GB<br>(ID: #0023)</div>
+      <div class="product-stock">40 Pc(s) in Stock</div>
+    </div>
+  </div>
+
+  <div class="col-4 mb-3">
+    <div class="product-card" data-name="Samsung Galaxy S22" data-code="#0024" data-serial="SN1002" data-price="1150.00" data-discount="5" data-instock="35">
+      <img src="https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-13-pink-select-2021" width="70">
+      <div>Samsung Galaxy S22 - 128 GB<br>(ID: #0024)</div>
+      <div class="product-stock">35 Pc(s) in Stock</div>
+    </div>
+  </div>
+
+  <div class="col-4 mb-3">
+    <div class="product-card" data-name="OnePlus 10 Pro" data-code="#0025" data-serial="SN1003" data-price="980.00" data-discount="8" data-instock="25">
+      <img src="https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-13-pink-select-2021" width="70">
+      <div>OnePlus 10 Pro - 256 GB<br>(ID: #0025)</div>
+      <div class="product-stock">25 Pc(s) in Stock</div>
+    </div>
+  </div>
+
+  <div class="col-4 mb-3">
+    <div class="product-card" data-name="Google Pixel 7" data-code="#0026" data-serial="SN1004" data-price="870.00" data-discount="7" data-instock="30">
+      <img src="https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-13-pink-select-2021" width="70">
+      <div>Google Pixel 7 - 128 GB<br>(ID: #0026)</div>
+      <div class="product-stock">30 Pc(s) in Stock</div>
+    </div>
+  </div>
+
+  <div class="col-4 mb-3">
+    <div class="product-card" data-name="Xiaomi 13 Pro" data-code="#0027" data-serial="SN1005" data-price="950.00" data-discount="5" data-instock="28">
+      <img src="https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-13-pink-select-2021" width="70">
+      <div>Xiaomi 13 Pro - 256 GB<br>(ID: #0027)</div>
+      <div class="product-stock">28 Pc(s) in Stock</div>
+    </div>
+  </div>
+
+  <div class="col-4 mb-3">
+    <div class="product-card" data-name="Sony Xperia 5" data-code="#0028" data-serial="SN1006" data-price="780.00" data-discount="0" data-instock="20">
+      <img src="https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-13-pink-select-2021" width="70">
+      <div>Sony Xperia 5 - 128 GB<br>(ID: #0028)</div>
+      <div class="product-stock">20 Pc(s) in Stock</div>
+    </div>
+  </div>
+
+  <div class="col-4 mb-3">
+    <div class="product-card" data-name="Huawei P50 Pro" data-code="#0029" data-serial="SN1007" data-price="1020.00" data-discount="6" data-instock="18">
+      <img src="https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-13-pink-select-2021" width="70">
+      <div>Huawei P50 Pro - 256 GB<br>(ID: #0029)</div>
+      <div class="product-stock">18 Pc(s) in Stock</div>
+    </div>
+  </div>
+
+  <div class="col-4 mb-3">
+    <div class="product-card" data-name="Motorola Edge 40" data-code="#0030" data-serial="SN1008" data-price="670.00" data-discount="3" data-instock="22">
+      <img src="https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-13-pink-select-2021" width="70">
+      <div>Motorola Edge 40 - 128 GB<br>(ID: #0030)</div>
+      <div class="product-stock">22 Pc(s) in Stock</div>
+    </div>
+  </div>
+
+  <div class="col-4 mb-3">
+    <div class="product-card" data-name="Asus ROG Phone 6" data-code="#0031" data-serial="SN1009" data-price="1190.00" data-discount="9" data-instock="15">
+      <img src="https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-13-pink-select-2021" width="70">
+      <div>Asus ROG Phone 6 - 512 GB<br>(ID: #0031)</div>
+      <div class="product-stock">15 Pc(s) in Stock</div>
+    </div>
+  </div>
+
+  <div class="col-4 mb-3">
+    <div class="product-card" data-name="Oppo Find X5" data-code="#0032" data-serial="SN1010" data-price="890.00" data-discount="4" data-instock="32">
+      <img src="https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-13-pink-select-2021" width="70">
+      <div>Oppo Find X5 - 256 GB<br>(ID: #0032)</div>
+      <div class="product-stock">32 Pc(s) in Stock</div>
+    </div>
+  </div>
+
+  <div class="col-4 mb-3">
+    <div class="product-card" data-name="Vivo X80" data-code="#0033" data-serial="SN1011" data-price="910.00" data-discount="5" data-instock="27">
+      <img src="https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-13-pink-select-2021" width="70">
+      <div>Vivo X80 - 256 GB<br>(ID: #0033)</div>
+      <div class="product-stock">27 Pc(s) in Stock</div>
+    </div>
+  </div>
+
+  <div class="col-4 mb-3">
+    <div class="product-card" data-name="Realme GT 3" data-code="#0034" data-serial="SN1012" data-price="650.00" data-discount="0" data-instock="30">
+      <img src="https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-13-pink-select-2021" width="70">
+      <div>Realme GT 3 - 128 GB<br>(ID: #0034)</div>
+      <div class="product-stock">30 Pc(s) in Stock</div>
+    </div>
+  </div>
+
+  <div class="col-4 mb-3">
+    <div class="product-card" data-name="Nokia X30" data-code="#0035" data-serial="SN1013" data-price="590.00" data-discount="2" data-instock="25">
+      <img src="https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-13-pink-select-2021" width="70">
+      <div>Nokia X30 - 128 GB<br>(ID: #0035)</div>
+      <div class="product-stock">25 Pc(s) in Stock</div>
+    </div>
+  </div>
+
+  <div class="col-4 mb-3">
+    <div class="product-card" data-name="LG Velvet" data-code="#0036" data-serial="SN1014" data-price="720.00" data-discount="0" data-instock="18">
+      <img src="https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-13-pink-select-2021" width="70">
+      <div>LG Velvet - 128 GB<br>(ID: #0036)</div>
+      <div class="product-stock">18 Pc(s) in Stock</div>
+    </div>
+  </div>
+
+  <div class="col-4 mb-3">
+    <div class="product-card" data-name="BlackBerry Key2" data-code="#0037" data-serial="SN1015" data-price="450.00" data-discount="0" data-instock="10">
+      <img src="https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-13-pink-select-2021" width="70">
+      <div>BlackBerry Key2 - 64 GB<br>(ID: #0037)</div>
+      <div class="product-stock">10 Pc(s) in Stock</div>
+    </div>
+  </div>
+
+  <div class="col-4 mb-3">
+    <div class="product-card" data-name="Samsung Galaxy S22" data-code="#0024" data-serial="SN1002" data-price="1150.00" data-discount="5" data-instock="35">
+      <img src="https://images.samsung.com/is/image/samsung/p6pim/levant/galaxys22/gallery/levant-galaxy-s22-s901-412153-sm-s901ezgdmea-530712538?$720_576_PNG$" width="70">
+      <div>Samsung Galaxy S22 - 128 GB<br>(ID: #0024)</div>
+      <div class="product-stock">35 Pc(s) in Stock</div>
+    </div>
+  </div>
+
+  <div class="col-4 mb-3">
+    <div class="product-card" data-name="ZTE Axon 40" data-code="#0039" data-serial="SN1017" data-price="670.00" data-discount="0" data-instock="18">
+      <img src="https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-13-pink-select-2021" width="70">
+      <div>ZTE Axon 40 - 128 GB<br>(ID: #0039)</div>
+      <div class="product-stock">18 Pc(s) in Stock</div>
+    </div>
+  </div>
+
+  <div class="col-4 mb-3">
+    <div class="product-card" data-name="Lenovo Legion Y70" data-code="#0040" data-serial="SN1018" data-price="950.00" data-discount="8" data-instock="12">
+      <img src="https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-13-pink-select-2021" width="70">
+      <div>Lenovo Legion Y70 - 256 GB<br>(ID: #0040)</div>
+      <div class="product-stock">12 Pc(s) in Stock</div>
+    </div>
+  </div>
+</div>
+
+
+          
+          <!-- (Other product cards skipped for brevity, same as your code) -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Panel -->
+    <div class="right-panel" style="background-color: #E6EAED;">
+      <div class="order-box shadow-sm p-3 bg-white rounded-4">
+        <!-- Order Header -->
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h5 class="fw-bold" style="color:#092C4C;">Order List</h5>
+          <div class="d-flex align-items-center gap-2">
+            <span class="badge bg-primary">#ORD123</span>
+            <button class="btn btn-square btn-danger" title="Delete Order">
+              <i class="fa-solid fa-trash" style="font-size: 8px;"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Customer Info -->
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Customer Information</label>
+          <div class="d-flex align-items-center">
+            <select class="form-select">
+              <option>Select Customer</option>
+              <option>Kasun Perera</option>
+              <option>Nimal Silva</option>
+            </select>
+            <button class="btn btn-square ms-2" title="Add Customer"><i class="fa-solid fa-user-plus"></i></button>
+          </div>
+
+          <div class="loyalty-box mt-3 position-relative">
+            <button class="close-circle" onclick="this.parentElement.style.display='none'"><i class="fa-solid fa-xmark"></i></button>
+            <div class="d-flex justify-content-between align-items-center">
+              <div>
+                <h6 class="mb-1 fw-bold">Kasun Perera</h6>
+                <small class="text-muted">Loyalty : <span class="badge bg-success">Rs 450.00</span></small>
+              </div>
+              <button class="btn btn-danger btn-sm">Apply</button>
+            </div>
+          </div>
+
+          <div class="row mt-3">
+            <div class="col-6">
+              <select class="form-select">
+                <option selected>Inv Type</option>
+                <option>Invoice</option>
+                <option>Quotation</option>
+                <option>Proforma</option>
+              </select>
+            </div>
+            <div class="col-6">
+              <select class="form-select">
+                <option selected>Discount Type</option>
+                <option>Percentage</option>
+                <option>Fixed</option>
+                <option>None</option>
+              </select>
+            </div>
+          </div>
+          <hr style="border-top: 2px dotted #bbb; margin-top:15px; margin-bottom:15px;">
+        </div>
+
+        <!-- ✅ Order Details Header with Count + Clear -->
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <h6 class="fw-bold m-0" style="color:#092C4C;">Order Details</h6>
+          <div class="d-flex align-items-center gap-3">
+            <span class="badge bg-light text-dark border">Items : <span id="itemCount">00</span></span>
+            <button class="btn btn-sm fw-bold" id="clearAllBtn" style="color: red;">Clear All</button>
+          </div>
+        </div>
+
+        <!-- Order Details Table -->
+        <div class="order-table-wrapper">
+        <table class="table table-sm align-middle mb-0">
+          <thead class="table-light">
+            <tr>
+              <th style="width:30px;"></th> <!-- icon column -->
+              <th>Item</th>
+              <th>Code</th>
+              <th>Serial</th>
+              <th>Price</th>
+              <th>Discount</th>
+              <th>Dis.Amount</th>
+              <th>In Stock</th>
+              <th>Qty</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody id="orderTableBody">
+            <tr>
+              <td><i class="fa-regular fa-trash-can text-secondary" style="padding-left: 8px;"></i></td>
+              <td>IPhone 12 pro - 256 GB</td>
+              <td>#24u745</td>
+              <td>#24u745</td>
+              <td>Rs 1230.00</td>
+              <td>12%</td>
+              <td>Rs 340.00</td>
+              <td>30 Pcs</td>
+              <td>10 Pcs</td>
+              <td>Rs 1340.00</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+
+
+        <!-- Payment Summary -->
+        <div class="mt-3">
+        <h6 class="fw-bold" style="color:#092C4C; padding-top: 5px;">Payment Summary</h6>
+
+        <div class="d-flex justify-content-between fw-semibold">
+          <span>Total</span>
+          <span class="fw-bold">Rs 12,300.00</span>
+        </div>
+
+        <div class="d-flex justify-content-between fw-semibold">
+          <span>Discount</span>
+          <span class="fw-bold">Rs 1,240.00</span>
+        </div>
+
+         <!-- Line Divider -->
+        <hr style="border-top: 1px solid #ccc; margin: 6px 0;">
+
+        <div class="d-flex justify-content-between fs-5 mt-2 fw-bold padding-top: 5px;">
+          <span>Net Total</span>
+          <span class="fw-bold text-success">Rs 35,896,000.00</span>
+        </div>
+      </div>
+      </div>
+
+      <div class="d-flex justify-content-center align-items-center pt-3">
+        <div class="payment-card shadow-sm">
+            <h6 class="fw-bold fs-5 mt-2">Select Payment</h6>
+            <div class="row g-3">
+            <div class="col-6 col-md-2">
+                <div class="payment-option">
+                <span>💵</span>
+                <span>Cash</span>
+                </div>
+            </div>
+            <div class="col-6 col-md-2">
+                <div class="payment-option">
+                <span>💳</span>`
+                <span>Card</span>
+                </div>
+            </div>
+            <div class="col-6 col-md-2">
+                <div class="payment-option">
+                <span>📄</span>
+                <span>Cheque</span>
+                </div>
+            </div>
+            <div class="col-6 col-md-2">
+                <div class="payment-option">
+                <span>🏦</span>
+                <span>Bank Deposit</span>
+                </div>
+            </div>
+            <div class="col-6 col-md-2">
+                <div class="payment-option">
+                <span>🧾</span>
+                <span>Credit</span>
+                </div>
+            </div>
+            <div class="col-6 col-md-2">
+                <div class="payment-option">
+                <span>🔶</span>
+                <span>Other</span>
+                </div>
+            </div>
+            </div>
+        </div>
+      </div>
+        <!-- Action Buttons -->
+       <div class="container">
+        <div class="row g-3">
+          <div class="col-md-6">
+            <button class="btn btn-print w-100 btn-custom rounded-4 fw-bold" style="height: 35px;">
+              <i class="bi bi-printer me-2 fw-bold text-blue"></i> Print Order
+            </button>
+          </div>
+          <div class="btn-pay col-md-6">
+            <button class="btn btn-primary w-100 btn-custom rounded-4 fw-bold" style="height: 35px;">              
+                <i class="bi bi-cart-check me-2 fw-bold"></i> Place Order
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Bar -->
+  <div class="bottom-bar">
+    <button class="btn btn-hold"><i class="fa-solid fa-pause"></i> Hold</button>
+    <button class="btn btn-orders"><i class="fa-solid fa-cart-shopping"></i> View Orders</button>
+    <button class="btn btn-reset"><i class="fa-solid fa-rotate"></i> Reset</button>
+    <button class="btn btn-Counter"><i class="fa-solid fa-calendar-check"></i> Counter Close</button>
+  </div>
+
+     <!-- Calculator Popup -->
+<!-- Calculator Popup -->
+<div id="calculatorPopup" class="popup-overlay d-none">
+  <div class="popup-content position-relative">
+    
+    <!-- Close Icon -->
+    <button class="close-btn" onclick="closePopup()">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+
+    <div class="calculator">
+      <input type="text" id="display" class="form-control" disabled>
+      <div class="row g-2 mt-2">
+        <div class="col-3"><button class="btn btn-danger w-100" onclick="clearDisplay()">C</button></div>
+        <div class="col-3"><button class="btn btn-secondary w-100" onclick="append('%')">%</button></div>
+        <div class="col-3"><button class="btn btn-secondary w-100" onclick="append('/')">÷</button></div>
+        <div class="col-3"><button class="btn btn-secondary w-100" onclick="backspace()">⌫</button></div>
+
+        <div class="col-3"><button class="btn btn-light w-100" onclick="append('7')">7</button></div>
+        <div class="col-3"><button class="btn btn-light w-100" onclick="append('8')">8</button></div>
+        <div class="col-3"><button class="btn btn-light w-100" onclick="append('9')">9</button></div>
+        <div class="col-3"><button class="btn btn-secondary w-100" onclick="append('*')">×</button></div>
+
+        <div class="col-3"><button class="btn btn-light w-100" onclick="append('4')">4</button></div>
+        <div class="col-3"><button class="btn btn-light w-100" onclick="append('5')">5</button></div>
+        <div class="col-3"><button class="btn btn-light w-100" onclick="append('6')">6</button></div>
+        <div class="col-3"><button class="btn btn-secondary w-100" onclick="append('-')">−</button></div>
+
+        <div class="col-3"><button class="btn btn-light w-100" onclick="append('1')">1</button></div>
+        <div class="col-3"><button class="btn btn-light w-100" onclick="append('2')">2</button></div>
+        <div class="col-3"><button class="btn btn-light w-100" onclick="append('3')">3</button></div>
+        <div class="col-3"><button class="btn btn-secondary w-100" onclick="append('+')">+</button></div>
+
+        <div class="col-6"><button class="btn btn-light w-100" onclick="append('0')">0</button></div>
+        <div class="col-3"><button class="btn btn-light w-100" onclick="append('.')">.</button></div>
+        <div class="col-3"><button class="btn btn-success w-100" onclick="calculate()">=</button></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>  
+  <script src="script.js"></script>
+  
+</body>
+</html>
