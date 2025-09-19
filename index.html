@@ -670,13 +670,13 @@
                     />
                     <label>Order Total</label>
                     <input
-                      type="number"
+                      type="text"
                       class="form-control mb-2"
                       placeholder="Rs 2300.00"
                     />
                     <label>Balance</label>
                     <input
-                      type="number"
+                      type="text"
                       class="form-control mb-2"
                       placeholder=""
                     />
@@ -684,25 +684,29 @@
 
                   <!-- Card -->
                   <div class="payment-fields d-none" id="cardFields">
-                    <label>Card Number</label>
+                    <label>Card type</label>
                     <input
                       type="text"
                       class="form-control mb-2"
-                      placeholder="XXXX-XXXX-XXXX-1234"
+                      placeholder="Visa, Master Card, Amex"
                     />
-                    <label>Card Holder Name</label>
+                    <label>Last 4 numbers if card</label>
                     <input
                       type="text"
                       class="form-control mb-2"
-                      placeholder="John Doe"
+                      placeholder="**** **** **** 1234"
                     />
-                    <label>Expiry Date</label>
-                    <input type="month" class="form-control mb-2" />
-                    <label>CVV</label>
+                    <label>Amount</label>
                     <input
-                      type="password"
+                      type="number"
                       class="form-control mb-2"
-                      placeholder="***"
+                      placeholder="Rs 000.00"
+                    />
+                    <label>Bank</label>
+                    <input
+                      type="text"
+                      class="form-control mb-2"
+                      placeholder="Enter bank name"
                     />
                   </div>
 
@@ -714,14 +718,23 @@
                       class="form-control mb-2"
                       placeholder="Enter cheque no."
                     />
+                    <label>Amount</label>
+                    <input
+                      type="number"
+                      class="form-control mb-2"
+                      placeholder="Rs 000.00"
+                    />
+                    <label>Date</label>
+                    <input 
+                      type="date" 
+                      class="form-control mb-2" 
+                    />
                     <label>Bank</label>
                     <input
                       type="text"
                       class="form-control mb-2"
                       placeholder="Enter bank name"
                     />
-                    <label>Date</label>
-                    <input type="date" class="form-control mb-2" />
                   </div>
 
                   <!-- Bank -->
@@ -732,33 +745,67 @@
                       class="form-control mb-2"
                       placeholder="Enter transaction ID"
                     />
-                    <label>Bank Name</label>
+                    <label>Branch</label>
                     <input
                       type="text"
                       class="form-control mb-2"
                       placeholder="Enter bank name"
                     />
+                    <label>Date</label>
+                    <input 
+                      type="date" 
+                      class="form-control mb-2" 
+                    />
+                    <label>Amount</label>
+                    <input
+                      type="number"
+                      class="form-control mb-2"
+                      placeholder="Enter amount"
+                    />
                   </div>
 
                   <!-- Credit -->
                   <div class="payment-fields d-none" id="creditFields">
-                    <label>Customer Name</label>
+                    <label>Account</label>
                     <input
                       type="text"
                       class="form-control mb-2"
-                      placeholder="Customer name"
+                      placeholder="Enter your account"
                     />
-                    <label>Due Date</label>
-                    <input type="date" class="form-control mb-2" />
+                    <label>Account Code</label>
+                    <input
+                       type="text" 
+                       class="form-control mb-2" 
+                       placeholder="Enter your account code" 
+                    />
+                    <label>Amount</label>
+                    <input
+                      type="number"
+                      class="form-control mb-2"
+                      placeholder="Enter amount"
+                    />
                   </div>
 
                   <!-- Other -->
                   <div class="payment-fields d-none" id="otherFields">
-                    <label>Description</label>
-                    <textarea
+                    <label>Account</label>
+                    <input
+                      type="text"
                       class="form-control mb-2"
-                      placeholder="Enter details"
-                    ></textarea>
+                      placeholder="Enter your account"
+                    />
+                    <label>Account Code</label>
+                    <input
+                       type="text" 
+                       class="form-control mb-2" 
+                       placeholder="Enter your account code" 
+                    />
+                    <label>Amount</label>
+                    <input
+                      type="number"
+                      class="form-control mb-2"
+                      placeholder="Enter amount"
+                    />
                   </div>
                 </div>
               </div>
