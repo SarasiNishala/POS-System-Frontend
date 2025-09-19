@@ -594,242 +594,133 @@
         </div>
 
         <!-- Payment Modal -->
-        <div class="modal fade" id="paymentModal" tabindex="-1">
-          <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content rounded-4 shadow-sm">
-              <div class="modal-header">
-                <h5 class="modal-title fw-bold">Select Payment Method</h5>
-                <button
-                  type="button"
-                  class="btn-close"
-                  data-bs-dismiss="modal"
-                ></button>
-              </div>
-              <div class="modal-body">
-                <!-- Payment Options -->
-                <div class="row g-3 text-center mb-3">
-                  <div class="col-6 col-md-4">
-                    <div
-                      class="payment-option"
-                      onclick="showPaymentFields('cash')"
-                    >
-                      💵<br />Cash
-                    </div>
-                  </div>
-                  <div class="col-6 col-md-4">
-                    <div
-                      class="payment-option"
-                      onclick="showPaymentFields('card')"
-                    >
-                      💳<br />Card
-                    </div>
-                  </div>
-                  <div class="col-6 col-md-4">
-                    <div
-                      class="payment-option"
-                      onclick="showPaymentFields('cheque')"
-                    >
-                      📄<br />Cheque
-                    </div>
-                  </div>
-                  <div class="col-6 col-md-4">
-                    <div
-                      class="payment-option"
-                      onclick="showPaymentFields('bank')"
-                    >
-                      🏦<br />Bank
-                    </div>
-                  </div>
-                  <div class="col-6 col-md-4">
-                    <div
-                      class="payment-option"
-                      onclick="showPaymentFields('credit')"
-                    >
-                      🧾<br />Credit
-                    </div>
-                  </div>
-                  <div class="col-6 col-md-4">
-                    <div
-                      class="payment-option"
-                      onclick="showPaymentFields('other')"
-                    >
-                      🔶<br />Other
-                    </div>
-                  </div>
-                </div>
+<div class="modal fade" id="paymentModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content rounded-4 shadow-sm">
+      <div class="modal-header">
+        <h5 class="modal-title fw-bold">Select Payment Method</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
 
-                <!-- Dynamic Fields -->
-                <div id="paymentFields">
-                  <!-- Cash -->
-                  <div class="payment-fields d-none" id="cashFields">
-                    <label>Amount Received</label>
-                    <input
-                      type="number"
-                      class="form-control mb-2"
-                      placeholder="Enter cash amount"
-                    />
-                    <label>Order Total</label>
-                    <input
-                      type="text"
-                      class="form-control mb-2"
-                      placeholder="Rs 2300.00"
-                    />
-                    <label>Balance</label>
-                    <input
-                      type="text"
-                      class="form-control mb-2"
-                      placeholder=""
-                    />
-                  </div>
-
-                  <!-- Card -->
-                  <div class="payment-fields d-none" id="cardFields">
-                    <label>Card type</label>
-                    <input
-                      type="text"
-                      class="form-control mb-2"
-                      placeholder="Visa, Master Card, Amex"
-                    />
-                    <label>Last 4 numbers if card</label>
-                    <input
-                      type="text"
-                      class="form-control mb-2"
-                      placeholder="**** **** **** 1234"
-                    />
-                    <label>Amount</label>
-                    <input
-                      type="number"
-                      class="form-control mb-2"
-                      placeholder="Rs 000.00"
-                    />
-                    <label>Bank</label>
-                    <input
-                      type="text"
-                      class="form-control mb-2"
-                      placeholder="Enter bank name"
-                    />
-                  </div>
-
-                  <!-- Cheque -->
-                  <div class="payment-fields d-none" id="chequeFields">
-                    <label>Cheque Number</label>
-                    <input
-                      type="text"
-                      class="form-control mb-2"
-                      placeholder="Enter cheque no."
-                    />
-                    <label>Amount</label>
-                    <input
-                      type="number"
-                      class="form-control mb-2"
-                      placeholder="Rs 000.00"
-                    />
-                    <label>Date</label>
-                    <input 
-                      type="date" 
-                      class="form-control mb-2" 
-                    />
-                    <label>Bank</label>
-                    <input
-                      type="text"
-                      class="form-control mb-2"
-                      placeholder="Enter bank name"
-                    />
-                  </div>
-
-                  <!-- Bank -->
-                  <div class="payment-fields d-none" id="bankFields">
-                    <label>Transaction ID</label>
-                    <input
-                      type="text"
-                      class="form-control mb-2"
-                      placeholder="Enter transaction ID"
-                    />
-                    <label>Branch</label>
-                    <input
-                      type="text"
-                      class="form-control mb-2"
-                      placeholder="Enter bank name"
-                    />
-                    <label>Date</label>
-                    <input 
-                      type="date" 
-                      class="form-control mb-2" 
-                    />
-                    <label>Amount</label>
-                    <input
-                      type="number"
-                      class="form-control mb-2"
-                      placeholder="Enter amount"
-                    />
-                  </div>
-
-                  <!-- Credit -->
-                  <div class="payment-fields d-none" id="creditFields">
-                    <label>Account</label>
-                    <input
-                      type="text"
-                      class="form-control mb-2"
-                      placeholder="Enter your account"
-                    />
-                    <label>Account Code</label>
-                    <input
-                       type="text" 
-                       class="form-control mb-2" 
-                       placeholder="Enter your account code" 
-                    />
-                    <label>Amount</label>
-                    <input
-                      type="number"
-                      class="form-control mb-2"
-                      placeholder="Enter amount"
-                    />
-                  </div>
-
-                  <!-- Other -->
-                  <div class="payment-fields d-none" id="otherFields">
-                    <label>Account</label>
-                    <input
-                      type="text"
-                      class="form-control mb-2"
-                      placeholder="Enter your account"
-                    />
-                    <label>Account Code</label>
-                    <input
-                       type="text" 
-                       class="form-control mb-2" 
-                       placeholder="Enter your account code" 
-                    />
-                    <label>Amount</label>
-                    <input
-                      type="number"
-                      class="form-control mb-2"
-                      placeholder="Enter amount"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div class="modal-footer">
-                <button class="btn btn-secondary" data-bs-dismiss="modal">
-                  Cancel
-                </button>
-                <button class="btn btn-success">Confirm Payment</button>
-              </div>
-            </div>
+      <div class="modal-body">
+        <!-- Payment Options -->
+        <div class="row g-3 text-center mb-3">
+          <div class="col-6 col-md-4">
+            <div class="payment-option" onclick="showPaymentFields('cash')">💵<br />Cash</div>
+          </div>
+          <div class="col-6 col-md-4">
+            <div class="payment-option" onclick="showPaymentFields('card')">💳<br />Card</div>
+          </div>
+          <div class="col-6 col-md-4">
+            <div class="payment-option" onclick="showPaymentFields('cheque')">📄<br />Cheque</div>
+          </div>
+          <div class="col-6 col-md-4">
+            <div class="payment-option" onclick="showPaymentFields('bank')">🏦<br />Bank</div>
+          </div>
+          <div class="col-6 col-md-4">
+            <div class="payment-option" onclick="showPaymentFields('credit')">🧾<br />Credit</div>
+          </div>
+          <div class="col-6 col-md-4">
+            <div class="payment-option" onclick="showPaymentFields('other')">🔶<br />Other</div>
           </div>
         </div>
 
-        <div class="btn-pay pt-4">
-          <button
-            class="btn btn-primary w-100 btn-custom rounded-4 fw-bold"
-            style="height: 35px"
-            onclick="showPaymentModal()"
-          >
-            <i class="bi bi-cart-check me-2 fw-bold"></i> Place Order
-          </button>
+        <!-- Dynamic Fields -->
+        <div id="paymentFields">
+          <!-- Cash -->
+          <div class="payment-fields d-none" id="cashFields">
+            <label>Amount Received</label>
+            <input type="number" id="cashAmount" class="form-control mb-2" placeholder="Enter cash amount" />
+            <button class="btn btn-sm btn-outline-success" onclick="addPayment('Cash')">Add Payment</button>
+          </div>
+
+          <!-- Card -->
+          <div class="payment-fields d-none" id="cardFields">
+            <label>Card type</label>
+            <input type="text" id="cardType" class="form-control mb-2" placeholder="Visa, Master Card, Amex" />
+            <label>Last 4 numbers of card</label>
+            <input type="text" id="cardLast4" class="form-control mb-2" placeholder="1234" />
+            <label>Amount</label>
+            <input type="number" id="cardAmount" class="form-control mb-2" placeholder="Rs 000.00" />
+            <button class="btn btn-sm btn-outline-success" onclick="addPayment('Card')">Add Payment</button>
+          </div>
+
+          <!-- Cheque -->
+          <div class="payment-fields d-none" id="chequeFields">
+            <label>Cheque Number</label>
+            <input type="text" id="chequeNo" class="form-control mb-2" placeholder="Enter cheque no." />
+            <label>Amount</label>
+            <input type="number" id="chequeAmount" class="form-control mb-2" placeholder="Rs 000.00" />
+            <button class="btn btn-sm btn-outline-success" onclick="addPayment('Cheque')">Add Payment</button>
+          </div>
+
+          <!-- Bank -->
+          <div class="payment-fields d-none" id="bankFields">
+            <label>Transaction ID</label>
+            <input type="text" id="bankTx" class="form-control mb-2" placeholder="Enter transaction ID" />
+            <label>Amount</label>
+            <input type="number" id="bankAmount" class="form-control mb-2" placeholder="Enter amount" />
+            <button class="btn btn-sm btn-outline-success" onclick="addPayment('Bank')">Add Payment</button>
+          </div>
+
+          <!-- Credit -->
+          <div class="payment-fields d-none" id="creditFields">
+            <label>Account</label>
+            <input type="text" id="creditAcc" class="form-control mb-2" placeholder="Enter account" />
+            <label>Amount</label>
+            <input type="number" id="creditAmount" class="form-control mb-2" placeholder="Enter amount" />
+            <button class="btn btn-sm btn-outline-success" onclick="addPayment('Credit')">Add Payment</button>
+          </div>
+
+          <!-- Other -->
+          <div class="payment-fields d-none" id="otherFields">
+            <label>Account</label>
+            <input type="text" id="otherAcc" class="form-control mb-2" placeholder="Enter account" />
+            <label>Amount</label>
+            <input type="number" id="otherAmount" class="form-control mb-2" placeholder="Enter amount" />
+            <button class="btn btn-sm btn-outline-success" onclick="addPayment('Other')">Add Payment</button>
+          </div>
+        </div>
+
+        <!-- Payment Grid -->
+        <div class="table-responsive mt-4">
+          <table class="table table-bordered text-center align-middle" id="paymentGrid">
+            <thead class="table-light">
+              <tr>
+                <th>Method</th>
+                <th>Details</th>
+                <th>Amount</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="modal-footer d-flex justify-content-between">
+        <!-- Left side -->
+        <button class="btn btn-outline-primary" onclick="printReceipt()">
+          <i class="bi bi-printer"></i> Print
+        </button>
+
+        <!-- Right side -->
+        <div class="d-flex gap-2">
+          <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button class="btn btn-success">Confirm Payment</button>
         </div>
       </div>
     </div>
+  </div>
+</div>
+
+<!-- Place Order Button -->
+<div class="btn-pay pt-4">
+  <button class="btn btn-primary w-100 btn-custom rounded-4 fw-bold" style="height: 35px" onclick="showPaymentModal()">
+    <i class="bi bi-cart-check me-2 fw-bold"></i> Place Order
+  </button>
+</div>
+
 
     <!-- Bottom Bar -->
     <div class="bottom-bar">
@@ -847,7 +738,6 @@
       </button>
     </div>
 
-    <!-- Calculator Popup -->
     <!-- Calculator Popup -->
     <div id="calculatorPopup" class="popup-overlay d-none">
       <div class="popup-content position-relative">

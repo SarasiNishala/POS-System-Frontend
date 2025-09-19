@@ -218,16 +218,63 @@ function toggleFullScreen() {
   // }
 
    // Show modal on Place Order
-  function showPaymentModal() {
-    const modal = new bootstrap.Modal(document.getElementById("paymentModal"));
-    modal.show();
+function showPaymentModal() {
+  const modal = new bootstrap.Modal(document.getElementById("paymentModal"));
+  modal.show();
+}
+
+// Switch between payment fields
+function showPaymentFields(type) {
+  document.querySelectorAll(".payment-fields").forEach(el => el.classList.add("d-none"));
+  document.getElementById(type + "Fields").classList.remove("d-none");
+}
+
+// Add payment to grid
+function addPayment(method) {
+  let amount = 0, details = "";
+
+  switch(method) {
+    case 'Cash':
+      amount = document.getElementById("cashAmount").value;
+      details = "Cash Payment";
+      break;
+    case 'Card':
+      amount = document.getElementById("cardAmount").value;
+      details = document.getElementById("cardType").value + " ****" + document.getElementById("cardLast4").value;
+      break;
+    case 'Cheque':
+      amount = document.getElementById("chequeAmount").value;
+      details = "Cheque #" + document.getElementById("chequeNo").value;
+      break;
+    case 'Bank':
+      amount = document.getElementById("bankAmount").value;
+      details = "Tx: " + document.getElementById("bankTx").value;
+      break;
+    case 'Credit':
+      amount = document.getElementById("creditAmount").value;
+      details = "Acc: " + document.getElementById("creditAcc").value;
+      break;
+    case 'Other':
+      amount = document.getElementById("otherAmount").value;
+      details = "Acc: " + document.getElementById("otherAcc").value;
+      break;
   }
 
-  // Switch between payment fields
-  function showPaymentFields(type) {
-    // Hide all fields
-    document.querySelectorAll(".payment-fields").forEach(el => el.classList.add("d-none"));
-    
-    // Show selected fields
-    document.getElementById(type + "Fields").classList.remove("d-none");
+  if (!amount || amount <= 0) {
+    alert("Enter valid amount!");
+    return;
   }
+
+  const tbody = document.querySelector("#paymentGrid tbody");
+  const row = document.createElement("tr");
+
+  row.innerHTML = `
+    <td>${method}</td>
+    <td>${details}</td>
+    <td>Rs ${parseFloat(amount).toFixed(2)}</td>
+    <td><button class="btn btn-sm btn-danger" onclick="this.closest('tr').remove()">Remove</button></td>
+  `;
+
+  tbody.appendChild(row);
+}
+
