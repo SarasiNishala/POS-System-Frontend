@@ -190,10 +190,44 @@ function toggleFullScreen() {
   }
 }
 
+ // Show Payment Method Modal
+  // function showPaymentMethods() {
+  //   const modal = new bootstrap.Modal(document.getElementById("paymentMethodModal"));
+  //   modal.show();
+  // }
 
-//payment
- document.querySelectorAll('.payment-option').forEach(option => {
-    option.addEventListener('click', () => {
-      option.classList.toggle('active'); // add/remove active class
-    });
-  });
+  // // Open specific payment modal
+  // function openPaymentModal(type) {
+  //   // Hide payment method selection
+  //   bootstrap.Modal.getInstance(document.getElementById("paymentMethodModal")).hide();
+
+  //   // Open selected modal
+  //   const modalId = {
+  //     cash: "cashModal",
+  //     card: "cardModal",
+  //     cheque: "chequeModal",
+  //     bank: "bankModal",
+  //     credit: "creditModal",
+  //     other: "otherModal"
+  //   }[type];
+
+  //   if (modalId) {
+  //     const modal = new bootstrap.Modal(document.getElementById(modalId));
+  //     modal.show();
+  //   }
+  // }
+
+   // Show modal on Place Order
+  function showPaymentModal() {
+    const modal = new bootstrap.Modal(document.getElementById("paymentModal"));
+    modal.show();
+  }
+
+  // Switch between payment fields
+  function showPaymentFields(type) {
+    // Hide all fields
+    document.querySelectorAll(".payment-fields").forEach(el => el.classList.add("d-none"));
+    
+    // Show selected fields
+    document.getElementById(type + "Fields").classList.remove("d-none");
+  }
