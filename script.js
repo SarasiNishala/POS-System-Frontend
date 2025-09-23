@@ -1,7 +1,10 @@
 // Show today’s date dynamically
 const today = new Date();
-const options = { year: 'numeric', month: 'long', day: 'numeric' };
-document.getElementById('todayDate').textContent = today.toLocaleDateString('en-US', options);
+const options = { year: "numeric", month: "long", day: "numeric" };
+document.getElementById("todayDate").textContent = today.toLocaleDateString(
+  "en-US",
+  options
+);
 
 // Initialize order items from localStorage
 let orderItems = JSON.parse(localStorage.getItem("orderItems")) || [];
@@ -14,7 +17,9 @@ function saveOrder() {
 // Update item count
 function updateItemCount() {
   const count = document.querySelectorAll("#orderTableBody tr").length;
-  document.getElementById("itemCount").textContent = count.toString().padStart(2,'0');
+  document.getElementById("itemCount").textContent = count
+    .toString()
+    .padStart(2, "0");
 }
 
 // Render table
@@ -31,20 +36,30 @@ function renderTable() {
   <td contenteditable="true" class="code-cell">${item.code || ""}</td>
   <td contenteditable="true" class="serial-cell">${item.serial || ""}</td>
   <td class="price-cell">
-    <input type="number" class="form-control form-control-sm price-input text-end" value="${item.price || ''}">
+    <input type="number" class="form-control form-control-sm price-input text-end" value="${
+      item.price || ""
+    }">
   </td>
   <td>
-    <input type="number" class="form-control form-control-sm discount-input text-end" value="${item.discount || ''}">
+    <input type="number" class="form-control form-control-sm discount-input text-end" value="${
+      item.discount || ""
+    }">
   </td>
   <td class="dis-amount-cell">
-    ${item.price && item.qty && item.discount ? ((item.price * item.qty * item.discount)/100).toFixed(2) : ''}
+    ${
+      item.price && item.qty && item.discount
+        ? ((item.price * item.qty * item.discount) / 100).toFixed(2)
+        : ""
+    }
   </td>
   <td contenteditable="true" class="instock-cell">${item.instock || ""}</td>
   <td>
-    <input type="number" class="form-control form-control-sm qty-input text-end" value="${item.qty || ''}">
+    <input type="number" class="form-control form-control-sm qty-input text-end" value="${
+      item.qty || ""
+    }">
   </td>
   <td class="total-cell">
-    ${item.price && item.qty ? (item.price * item.qty).toFixed(2) : ''}
+    ${item.price && item.qty ? (item.price * item.qty).toFixed(2) : ""}
   </td>
 `;
 
@@ -60,8 +75,8 @@ function renderTable() {
     discountInput.addEventListener("input", () => updateRow(index));
 
     // Enter key on qty creates new empty row
-    qtyInput.addEventListener("keydown", e => {
-      if(e.key === "Enter") createEmptyRow(index + 1);
+    qtyInput.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") createEmptyRow(index + 1);
     });
   });
 
@@ -76,7 +91,10 @@ function updateRow(index) {
   const discount = parseFloat(row.querySelector(".discount-input").value) || 0;
 
   row.querySelector(".total-cell").textContent = (price * qty).toFixed(2);
-  row.querySelector(".dis-amount-cell").textContent = ((price * qty * discount)/100).toFixed(2);
+  row.querySelector(".dis-amount-cell").textContent = (
+    (price * qty * discount) /
+    100
+  ).toFixed(2);
 
   orderItems[index].price = price;
   orderItems[index].qty = qty;
@@ -86,7 +104,15 @@ function updateRow(index) {
 
 // Create empty row
 function createEmptyRow(position) {
-  orderItems.splice(position, 0, { name: "", code: "", serial: "", price: "", discount: "", instock: "", qty: "" });
+  orderItems.splice(position, 0, {
+    name: "",
+    code: "",
+    serial: "",
+    price: "",
+    discount: "",
+    instock: "",
+    qty: "",
+  });
   saveOrder();
   renderTable();
 
@@ -97,9 +123,11 @@ function createEmptyRow(position) {
 }
 
 // Delete row
-document.getElementById("orderTableBody").addEventListener("click", e => {
-  if(e.target.closest(".delete-row")){
-    const rowIndex = Array.from(e.target.closest("tr").parentNode.children).indexOf(e.target.closest("tr"));
+document.getElementById("orderTableBody").addEventListener("click", (e) => {
+  if (e.target.closest(".delete-row")) {
+    const rowIndex = Array.from(
+      e.target.closest("tr").parentNode.children
+    ).indexOf(e.target.closest("tr"));
     orderItems.splice(rowIndex, 1);
     saveOrder();
     renderTable();
@@ -107,7 +135,7 @@ document.getElementById("orderTableBody").addEventListener("click", e => {
 });
 
 // Add product from card click
-document.querySelectorAll(".product-card").forEach(card => {
+document.querySelectorAll(".product-card").forEach((card) => {
   card.addEventListener("click", () => {
     const name = card.dataset.name || "Product";
     const code = card.dataset.code || "#000";
@@ -116,12 +144,28 @@ document.querySelectorAll(".product-card").forEach(card => {
     const instock = card.dataset.instock || 0;
 
     // Find first empty row
-    const emptyIndex = orderItems.findIndex(item => !item.name && !item.code);
+    const emptyIndex = orderItems.findIndex((item) => !item.name && !item.code);
 
-    if(emptyIndex !== -1){
-      orderItems[emptyIndex] = { name, code, serial, price, discount: 0, instock, qty: 1 };
+    if (emptyIndex !== -1) {
+      orderItems[emptyIndex] = {
+        name,
+        code,
+        serial,
+        price,
+        discount: 0,
+        instock,
+        qty: 1,
+      };
     } else {
-      orderItems.push({ name, code, serial, price, discount: 0, instock, qty: 1 });
+      orderItems.push({
+        name,
+        code,
+        serial,
+        price,
+        discount: 0,
+        instock,
+        qty: 1,
+      });
     }
 
     saveOrder();
@@ -129,7 +173,9 @@ document.querySelectorAll(".product-card").forEach(card => {
 
     // Focus + Select QTY input of newly added row
     const focusIndex = emptyIndex !== -1 ? emptyIndex : orderItems.length - 1;
-    const qtyInput = document.getElementById("orderTableBody").children[focusIndex].querySelector(".qty-input");
+    const qtyInput = document
+      .getElementById("orderTableBody")
+      .children[focusIndex].querySelector(".qty-input");
     if (qtyInput) {
       qtyInput.focus();
       qtyInput.select(); // highlight value
@@ -160,14 +206,14 @@ function closePopup() {
 }
 
 // Calculator functions
-const display = document.getElementById('display');
+const display = document.getElementById("display");
 
 function append(value) {
   display.value += value;
 }
 
 function clearDisplay() {
-  display.value = '';
+  display.value = "";
 }
 
 function backspace() {
@@ -176,9 +222,9 @@ function backspace() {
 
 function calculate() {
   try {
-    display.value = eval(display.value.replace('÷', '/').replace('×', '*'));
+    display.value = eval(display.value.replace("÷", "/").replace("×", "*"));
   } catch {
-    display.value = 'Error';
+    display.value = "Error";
   }
 }
 
@@ -190,34 +236,34 @@ function toggleFullScreen() {
   }
 }
 
- // Show Payment Method Modal
-  // function showPaymentMethods() {
-  //   const modal = new bootstrap.Modal(document.getElementById("paymentMethodModal"));
-  //   modal.show();
-  // }
+// Show Payment Method Modal
+// function showPaymentMethods() {
+//   const modal = new bootstrap.Modal(document.getElementById("paymentMethodModal"));
+//   modal.show();
+// }
 
-  // // Open specific payment modal
-  // function openPaymentModal(type) {
-  //   // Hide payment method selection
-  //   bootstrap.Modal.getInstance(document.getElementById("paymentMethodModal")).hide();
+// // Open specific payment modal
+// function openPaymentModal(type) {
+//   // Hide payment method selection
+//   bootstrap.Modal.getInstance(document.getElementById("paymentMethodModal")).hide();
 
-  //   // Open selected modal
-  //   const modalId = {
-  //     cash: "cashModal",
-  //     card: "cardModal",
-  //     cheque: "chequeModal",
-  //     bank: "bankModal",
-  //     credit: "creditModal",
-  //     other: "otherModal"
-  //   }[type];
+//   // Open selected modal
+//   const modalId = {
+//     cash: "cashModal",
+//     card: "cardModal",
+//     cheque: "chequeModal",
+//     bank: "bankModal",
+//     credit: "creditModal",
+//     other: "otherModal"
+//   }[type];
 
-  //   if (modalId) {
-  //     const modal = new bootstrap.Modal(document.getElementById(modalId));
-  //     modal.show();
-  //   }
-  // }
+//   if (modalId) {
+//     const modal = new bootstrap.Modal(document.getElementById(modalId));
+//     modal.show();
+//   }
+// }
 
-   // Show modal on Place Order
+// Show modal on Place Order
 function showPaymentModal() {
   const modal = new bootstrap.Modal(document.getElementById("paymentModal"));
   modal.show();
@@ -225,36 +271,42 @@ function showPaymentModal() {
 
 // Switch between payment fields
 function showPaymentFields(type) {
-  document.querySelectorAll(".payment-fields").forEach(el => el.classList.add("d-none"));
+  document
+    .querySelectorAll(".payment-fields")
+    .forEach((el) => el.classList.add("d-none"));
   document.getElementById(type + "Fields").classList.remove("d-none");
 }
 
 // Add payment to grid
 function addPayment(method) {
-  let amount = 0, details = "";
+  let amount = 0,
+    details = "";
 
-  switch(method) {
-    case 'Cash':
+  switch (method) {
+    case "Cash":
       amount = document.getElementById("cashAmount").value;
       details = "Cash Payment";
       break;
-    case 'Card':
+    case "Card":
       amount = document.getElementById("cardAmount").value;
-      details = document.getElementById("cardType").value + " ****" + document.getElementById("cardLast4").value;
+      details =
+        document.getElementById("cardType").value +
+        " ****" +
+        document.getElementById("cardLast4").value;
       break;
-    case 'Cheque':
+    case "Cheque":
       amount = document.getElementById("chequeAmount").value;
       details = "Cheque #" + document.getElementById("chequeNo").value;
       break;
-    case 'Bank':
+    case "Bank":
       amount = document.getElementById("bankAmount").value;
       details = "Tx: " + document.getElementById("bankTx").value;
       break;
-    case 'Credit':
+    case "Credit":
       amount = document.getElementById("creditAmount").value;
       details = "Acc: " + document.getElementById("creditAcc").value;
       break;
-    case 'Other':
+    case "Other":
       amount = document.getElementById("otherAmount").value;
       details = "Acc: " + document.getElementById("otherAcc").value;
       break;
@@ -278,3 +330,47 @@ function addPayment(method) {
   tbody.appendChild(row);
 }
 
+// Function to calculate totals with discount as amount or percentage
+function calculateTotals() {
+  let total = 0;
+
+  // Loop through each row in order table
+  const tableBody = document.getElementById("orderTableBody");
+  for (let row of tableBody.rows) {
+    const totalCell = row.cells[9]; // Total column
+    let rowTotal =
+      parseFloat(totalCell.textContent.replace(/[^0-9.]/g, "")) || 0;
+    total += rowTotal;
+  }
+
+  document.getElementById("totalAmount").textContent = "Rs " + total.toFixed(2);
+
+  // Get discount value and type
+  const discountValue =
+    parseFloat(document.getElementById("discountAmount").value) || 0;
+  const discountType = document.getElementById("discountType").value;
+
+  let discountAmount = 0;
+
+  if (discountType === "percentage") {
+    discountAmount = (discountValue / 100) * total;
+  } else {
+    discountAmount = discountValue;
+  }
+
+  // Calculate Net Total
+  const netTotal = total - discountAmount;
+  document.getElementById("netTotalAmount").textContent =
+    "Rs " + (netTotal >= 0 ? netTotal.toFixed(2) : 0);
+}
+
+// Trigger calculation when discount changes
+document
+  .getElementById("discountAmount")
+  .addEventListener("input", calculateTotals);
+document
+  .getElementById("discountType")
+  .addEventListener("change", calculateTotals);
+
+// Trigger calculation initially
+calculateTotals();
