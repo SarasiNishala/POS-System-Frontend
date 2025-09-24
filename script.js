@@ -86,20 +86,40 @@ function renderTable() {
 // Update row values
 function updateRow(index) {
   const row = document.getElementById("orderTableBody").children[index];
-  const price = parseFloat(row.querySelector(".price-input").value) || 0;
-  const qty = parseFloat(row.querySelector(".qty-input").value) || 0;
-  const discount = parseFloat(row.querySelector(".discount-input").value) || 0;
+  const priceInput = row.querySelector(".price-input");
+  const qtyInput = row.querySelector(".qty-input");
+  const discountInput = row.querySelector(".discount-input");
 
-  row.querySelector(".total-cell").textContent = (price * qty).toFixed(2);
-  row.querySelector(".dis-amount-cell").textContent = (
-    (price * qty * discount) /
-    100
-  ).toFixed(2);
+  // Get and sanitize values (ensure >= 0)
+  let price = parseFloat(priceInput.value) || 0;
+  let qty = parseFloat(qtyInput.value) || 0;
+  let discount = parseFloat(discountInput.value) || 0;
 
+  // Enforce non-negative
+  price = Math.max(0, price);
+  qty = Math.max(0, qty);
+  discount = Math.max(0, discount);
+
+  // Update inputs to reflect sanitized values
+  priceInput.value = price;
+  qtyInput.value = qty;
+  discountInput.value = discount;
+
+  // Calculate derived values
+  const total = price * qty;
+  const disAmount = (total * discount) / 100;
+
+  // Update display cells
+  row.querySelector(".total-cell").textContent = total.toFixed(2);
+  row.querySelector(".dis-amount-cell").textContent = disAmount.toFixed(2);
+
+  // Save sanitized values to orderItems
   orderItems[index].price = price;
   orderItems[index].qty = qty;
   orderItems[index].discount = discount;
+
   saveOrder();
+  calculateTotals(); // Recalculate grand totals if you have them
 }
 
 // Create empty row

@@ -373,3 +373,50 @@ body {
   color: #ff0000;
   transform: scale(1.1);
 }
+
+/* Make table header sticky inside scrollable wrapper */
+.order-table-wrapper table {
+  width: 100%;
+  border-collapse: separate; /* Required for scrollable tbody */
+  border-spacing: 0;
+}
+
+.order-table-wrapper thead,
+.order-table-wrapper tbody {
+  display: block;
+}
+
+.order-table-wrapper thead {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #f8f9fa; /* Match .table-light background */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.order-table-wrapper tbody {
+  max-height: 210px; /* Adjust based on your desired visible rows */
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: block;
+}
+
+/* Ensure columns align properly */
+.order-table-wrapper th,
+.order-table-wrapper td {
+  padding: 8px;
+  text-align: left;
+  min-width: 100px; /* Prevent columns from collapsing */
+  box-sizing: border-box;
+}
+
+/* Fix alignment for numeric columns */
+.order-table-wrapper .price-cell,
+.order-table-wrapper .dis-amount-cell,
+.order-table-wrapper .total-cell {
+  text-align: right !important;
+}
+
+.order-table-wrapper .instock-cell {
+  text-align: center !important;
+}
