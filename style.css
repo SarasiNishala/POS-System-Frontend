@@ -272,9 +272,8 @@ body {
 .payment-option.active {
   border-color: #0d6efd;
   background: #e6f0ff;
-  box-shadow: 0 0 6px rgba(13,110,253,0.4);
+  box-shadow: 0 0 6px rgba(13, 110, 253, 0.4);
 }
-
 
 .container {
   width: 100%;
@@ -309,7 +308,8 @@ body {
 
 .table th:nth-child(5), /* Price header */
 .table th:nth-child(7), /* Dis.Amount header */
-.table th:nth-child(10) { /* Total header */
+.table th:nth-child(10) {
+  /* Total header */
   text-align: right;
 }
 
@@ -318,10 +318,10 @@ body {
   text-align: center;
 }
 
-.table th:nth-child(8) { /* In Stock header */
+.table th:nth-child(8) {
+  /* In Stock header */
   text-align: center;
 }
-
 
 /* Popup overlay with blur */
 .popup-overlay {
@@ -330,7 +330,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.3);
+  background: rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(5px);
   display: flex;
   justify-content: center;
@@ -391,7 +391,7 @@ body {
   top: 0;
   z-index: 10;
   background: #f8f9fa; /* Match .table-light background */
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .order-table-wrapper tbody {
