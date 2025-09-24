@@ -1,158 +1,241 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Register - E-Inventory</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
-  <style>
-    body {
-      background: #f4f6f9;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register - E-Inventory</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background: #f4f6f9;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
 
-    .register-container {
-      max-width: 900px;
-      margin: auto;
-      background: #fff;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-      display: flex;
-      flex-wrap: wrap;
-    }
+      .register-container {
+        max-width: 900px;
+        margin: auto;
+        background: #fff;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-wrap: wrap;
+      }
 
-    .register-left {
-      flex: 1;
-      padding: 3rem 2rem;
-      min-width: 300px;
-    }
+      .register-left {
+        flex: 1;
+        padding: 3rem 2rem;
+        min-width: 300px;
+      }
 
-    .register-left h2 {
-      font-weight: 700;
-    }
+      .register-left h2 {
+        font-weight: 700;
+      }
 
-    .register-left p {
-      color: #6c757d;
-    }
+      .register-left p {
+        color: #6c757d;
+      }
 
-    .register-form label {
-      font-weight: 500;
-    }
+      .register-form label {
+        font-weight: 500;
+      }
 
-    .form-control {
-      border-radius: 8px;
-      padding: 0.75rem;
-    }
+      .form-control {
+        border-radius: 8px;
+        padding: 0.75rem;
+      }
 
-    .form-control:focus {
-      box-shadow: none;
-      border-color: #0d6efd;
-    }
+      .form-control:focus {
+        box-shadow: none;
+        border-color: #0d6efd;
+      }
 
-    .btn-register {
-      background: #0d6efd;
-      border: none;
-      padding: 0.75rem;
-      font-weight: 600;
-      border-radius: 8px;
-    }
+      .btn-register {
+        background: #0d6efd;
+        border: none;
+        padding: 0.75rem;
+        font-weight: 600;
+        border-radius: 8px;
+      }
 
-    .btn-register:hover {
-      background: #0b5ed7;
-    }
+      .btn-register:hover {
+        background: #0b5ed7;
+      }
 
-    .register-right {
-      flex: 1;
-      background: #e8f0fe;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem;
-      min-width: 300px;
-    }
+      .register-right {
+        flex: 1;
+        background: #e8f0fe;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+        min-width: 300px;
+      }
 
-    .register-right img {
-      max-width: 100%;
-      height: auto;
-    }
+      .register-right img {
+        max-width: 100%;
+        height: auto;
+      }
 
-    /* Toast position */
-    #toastContainer {
-      position: fixed;
-      top: 1rem;
-      right: 1rem;
-      z-index: 1055;
-    }
-  </style>
-</head>
-<body class="d-flex align-items-center justify-content-center vh-100">
+      /* Toast position */
+      #toastContainer {
+        position: fixed;
+        top: 1rem;
+        right: 1rem;
+        z-index: 1055;
+      }
 
-  <div class="register-container">
-    <!-- Left Side (Form) -->
-    <div class="register-left">
-      <h2 class="mb-1" style="color: #0d6efd;">ANT POS</h2>
-      <p class="mb-4">Online pos management system</p>
-      
-      <h4 class="fw-bold mb-3">Register</h4>
-      
-      <form id="registerForm" class="register-form">
-        <div class="mb-3">
-          <label class="form-label">Full Name</label>
-          <div class="input-group">
-            <span class="input-group-text"><i class="bi bi-person"></i></span>
-            <input type="text" id="name" class="form-control" placeholder="Enter your name" required />
+      /* Remove the middle line between input and eye icon */
+      .input-group .form-control {
+        border-right: none;
+      }
+
+      .input-group .input-group-text {
+        background: white;
+        border-left: none;
+      }
+    </style>
+  </head>
+  <body class="d-flex align-items-center justify-content-center vh-100">
+    <div class="register-container">
+      <!-- Left Side (Form) -->
+      <div class="register-left">
+        <h2 class="mb-1" style="color: #0d6efd">ANT POS</h2>
+        <p class="mb-4">Online pos management system</p>
+
+        <h4 class="fw-bold mb-3">Register</h4>
+
+        <form id="registerForm" class="register-form">
+          <div class="mb-3">
+            <label class="form-label">Full Name</label>
+            <div class="input-group">
+              <input
+                type="text"
+                id="name"
+                class="form-control"
+                placeholder="Enter your name"
+                required
+              />
+            </div>
           </div>
-        </div>
 
-        <div class="mb-3">
-          <label class="form-label">Email Address</label>
-          <div class="input-group">
-            <span class="input-group-text"><i class="bi bi-envelope"></i></span>
-            <input type="email" id="email" class="form-control" placeholder="Enter your email" required />
+          <div class="mb-3">
+            <label class="form-label">Email Address</label>
+            <div class="input-group">
+              <input
+                type="email"
+                id="email"
+                class="form-control"
+                placeholder="Enter your email"
+                required
+              />
+            </div>
           </div>
-        </div>
-        
-        <div class="mb-3">
-          <label class="form-label">Password</label>
-          <div class="input-group">
-            <span class="input-group-text"><i class="bi bi-lock"></i></span>
-            <input type="password" id="password" class="form-control" placeholder="Enter password" required />
+
+          <!-- Password -->
+          <div class="mb-3">
+            <label class="form-label">Password</label>
+            <div class="input-group">
+              <input
+                type="password"
+                id="password"
+                class="form-control"
+                placeholder="Enter password"
+                required
+              />
+              <span class="input-group-text">
+                <i
+                  class="bi bi-eye-slash"
+                  id="togglePassword"
+                  style="cursor: pointer"
+                ></i>
+              </span>
+            </div>
           </div>
-        </div>
 
-        <div class="mb-3">
-          <label class="form-label">Confirm Password</label>
-          <div class="input-group">
-            <span class="input-group-text"><i class="bi bi-lock-fill"></i></span>
-            <input type="password" id="confirmPassword" class="form-control" placeholder="Confirm password" required />
+          <!-- Confirm Password -->
+          <div class="mb-3">
+            <label class="form-label">Confirm Password</label>
+            <div class="input-group">
+              <input
+                type="password"
+                id="confirmPassword"
+                class="form-control"
+                placeholder="Confirm password"
+                required
+              />
+              <span class="input-group-text">
+                <i
+                  class="bi bi-eye-slash"
+                  id="toggleConfirmPassword"
+                  style="cursor: pointer"
+                ></i>
+              </span>
+            </div>
           </div>
-        </div>
 
-        <button type="submit" class="btn btn-register text-white w-100">Register</button>
-      </form>
+          <button type="submit" class="btn btn-register text-white w-100">
+            Register
+          </button>
+        </form>
 
-      <p class="text-center mt-3">
-        Already have an account? 
-        <a href="login.html" class="text-decoration-none fw-semibold">Login</a>
-      </p>
+        <p class="text-center mt-3">
+          Already have an account?
+          <a href="login.html" class="text-decoration-none fw-semibold"
+            >Login</a
+          >
+        </p>
+      </div>
+
+      <!-- Right Side (Image) -->
+      <div class="register-right">
+        <img
+          src="/assets/images/registration.png"
+          alt="Register Illustration"
+        />
+      </div>
     </div>
 
-    <!-- Right Side (Image) -->
-    <div class="register-right">
-      <img src="/assets/images/registration.png" alt="Register Illustration">
-    </div>
-  </div>
+    <!-- Toast Container -->
+    <div id="toastContainer"></div>
 
-  <!-- Toast Container -->
-  <div id="toastContainer"></div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // Toggle password visibility
+      const passwordField = document.getElementById("password");
+      const togglePassword = document.getElementById("togglePassword");
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.js"></script>
-  <script>
-    function showToast(message, type = "success") {
-      const toastId = "toast" + Date.now();
-      const toastHTML = `
+      togglePassword.addEventListener("click", () => {
+        const type = passwordField.type === "password" ? "text" : "password";
+        passwordField.type = type;
+        togglePassword.classList.toggle("bi-eye");
+        togglePassword.classList.toggle("bi-eye-slash");
+      });
+
+      const confirmPasswordField = document.getElementById("confirmPassword");
+      const toggleConfirmPassword = document.getElementById(
+        "toggleConfirmPassword"
+      );
+
+      toggleConfirmPassword.addEventListener("click", () => {
+        const type =
+          confirmPasswordField.type === "password" ? "text" : "password";
+        confirmPasswordField.type = type;
+        toggleConfirmPassword.classList.toggle("bi-eye");
+        toggleConfirmPassword.classList.toggle("bi-eye-slash");
+      });
+
+      // Toast logic
+      function showToast(message, type = "success") {
+        const toastId = "toast" + Date.now();
+        const toastHTML = `
         <div id="${toastId}" class="toast align-items-center text-bg-${type} border-0 mb-2" role="alert" aria-live="assertive" aria-atomic="true">
           <div class="d-flex">
             <div class="toast-body">${message}</div>
@@ -160,41 +243,49 @@
           </div>
         </div>
       `;
-      document.getElementById("toastContainer").insertAdjacentHTML("beforeend", toastHTML);
-      const toastElement = document.getElementById(toastId);
-      const toast = new bootstrap.Toast(toastElement, { delay: 3000 });
-      toast.show();
-    }
-
-    document.getElementById("registerForm").addEventListener("submit", function(e) {
-      e.preventDefault();
-
-      const name = document.getElementById("name").value.trim();
-      const email = document.getElementById("email").value.trim();
-      const password = document.getElementById("password").value;
-      const confirmPassword = document.getElementById("confirmPassword").value;
-
-      if (password !== confirmPassword) {
-        showToast("❌ Passwords do not match!", "danger");
-        return;
+        document
+          .getElementById("toastContainer")
+          .insertAdjacentHTML("beforeend", toastHTML);
+        const toastElement = document.getElementById(toastId);
+        const toast = new bootstrap.Toast(toastElement, { delay: 3000 });
+        toast.show();
       }
 
-      let users = JSON.parse(localStorage.getItem("users")) || [];
+      document
+        .getElementById("registerForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
 
-      const existingUser = users.find(u => u.email === email);
-      if (existingUser) {
-        showToast("⚠️ Email already registered!", "warning");
-        return;
-      }
+          const name = document.getElementById("name").value.trim();
+          const email = document.getElementById("email").value.trim();
+          const password = document.getElementById("password").value;
+          const confirmPassword =
+            document.getElementById("confirmPassword").value;
 
-      users.push({ name, email, password });
-      localStorage.setItem("users", JSON.stringify(users));
+          if (password !== confirmPassword) {
+            showToast("❌ Passwords do not match!", "danger");
+            return;
+          }
 
-      showToast("✅ Registration successful! Redirecting to login...", "success");
-      setTimeout(() => {
-        window.location.href = "login.html";
-      }, 2000);
-    });
-  </script>
-</body>
+          let users = JSON.parse(localStorage.getItem("users")) || [];
+
+          const existingUser = users.find((u) => u.email === email);
+          if (existingUser) {
+            showToast("⚠️ Email already registered!", "warning");
+            return;
+          }
+
+          users.push({ name, email, password });
+          localStorage.setItem("users", JSON.stringify(users));
+
+          showToast(
+            "✅ Registration successful! Redirecting to login...",
+            "success"
+          );
+          setTimeout(() => {
+            window.location.href = "login.html";
+          }, 2000);
+        });
+    </script>
+  </body>
 </html>
